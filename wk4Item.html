@@ -19,7 +19,7 @@
     <script src="https://js.arcgis.com/4.18/"></script>
     <script>
       require(["esri/config","esri/Map", "esri/views/MapView", "esri/widgets/Locate", "esri/widgets/Track",
-          "esri/Graphic"], function (esriConfig,Map, MapView, Locate, Track, Graphic) {
+          "esri/Graphic", "esri/layers/GraphicsLayer"], function (esriConfig,Map, MapView, Locate, Track, Graphic, GraphicsLayer) {
         esriConfig.apiKey = "AAPKabbee03894ee40d6858ccede905fae8aeuROdfYdGIi6Db9F9VBWSxlx8Avy6-J1iOeUjmgkFRPTx4sJkCAD8jGbYZQb9jKc";
 
         const map = new Map({
@@ -56,6 +56,21 @@
           useHeadingEnabled: false
         });
         view.ui.add(track, "top-left");
+        const graphicsLayer = new GraphicsLayer();
+        map.add(graphicsLayer);
+        const point = { //Create a point
+    type: "point",
+    longitude: -118.80657463861,
+    latitude: 34.0005930608889
+ };
+ const simpleMarkerSymbol = {
+    type: "simple-marker",
+    color: [226, 119, 40],  // Orange
+    outline: {
+        color: [255, 255, 255], // White
+        width: 1
+    }
+ };
       });
     </script>
     
