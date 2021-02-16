@@ -95,10 +95,20 @@
         width: 2
     }
  };
-
+ const popupTemplate = {
+    title: "{Name}",
+    content: "{Description}"
+ }
+ const attributes = {
+    Name: "Lindsay Ontario",
+    Description: "This is Lindsay Ontario, the point on the map displays the best place to get Valentines Day goodies."
+ }
+ 
  const polygonGraphic = new Graphic({
     geometry: polygon,
     symbol: simpleFillSymbol,
+   attributes: attributes,
+    popupTemplate: popupTemplate
 
  });
  graphicsLayer.add(polygonGraphic);
