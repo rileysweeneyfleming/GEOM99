@@ -1,64 +1,49 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>ArcGIS API for JavaScript Tutorials: Display a map</title>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>ArcGIS API for JavaScript Tutorials: Add a point, line, and polygon</title>
+  <style>
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.18/"></script>
+  <script>
 
-    <style>
-      html,
-      body,
-      #viewDiv {
-        padding: 0;
-        margin: 0;
-        height: 100%;
-        width: 100%;
-      }
-    </style>
-    <link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/themes/light/main.css">
-    <script src="https://js.arcgis.com/4.18/"></script>
-    <script>
-      require(["esri/config","esri/Map", "esri/views/MapView", "esri/widgets/Locate", "esri/widgets/Track",
-          "esri/Graphic", "esri/layers/GraphicsLayer"], function (esriConfig,Map, MapView, Locate, Track, Graphic, GraphicsLayer) {
-        esriConfig.apiKey = "AAPKabbee03894ee40d6858ccede905fae8aeuROdfYdGIi6Db9F9VBWSxlx8Avy6-J1iOeUjmgkFRPTx4sJkCAD8jGbYZQb9jKc";
+  require([
+    "esri/config",
+    "esri/Map",
+    "esri/views/MapView",
 
-        const map = new Map({
-          basemap: "arcgis-navigation" // Basemap layer service
-        });
-        const view = new MapView({
-          map: map,
-          center: [-78.836598, 44.396901], // Longitude, latitude
-          zoom: 10, // Zoom level
-          container: "viewDiv" // Div element
-        });
-         const locate = new Locate({
-          view: view,
-          useHeadingEnabled: false,
-          goToOverride: function(view, options) {
-            options.target.scale = 1500;
-            return view.goTo(options.target);
-          }
-        });
-        view.ui.add(locate, "top-left");
-          const track = new Track({
-          view: view,
-          graphic: new Graphic({
-            symbol: {
-              type: "simple-marker",
-              size: "12px",
-              color: "green",
-              outline: {
-                color: "#efefef",
-                width: "1.5px"
-              }
-            }
-          }),
-          useHeadingEnabled: false
-        });
-        view.ui.add(track, "top-left");
-        const graphicsLayer = new GraphicsLayer();
-        map.add(graphicsLayer);
-        const point = { //Create a point
+    "esri/Graphic",
+    "esri/layers/GraphicsLayer"
+
+    ], function(esriConfig,Map, MapView, Graphic, GraphicsLayer) {
+
+  esriConfig.apiKey = "AAPKabbee03894ee40d6858ccede905fae8aeuROdfYdGIi6Db9F9VBWSxlx8Avy6-J1iOeUjmgkFRPTx4sJkCAD8jGbYZQb9jKc";
+
+  const map = new Map({
+    basemap: "arcgis-topographic" //Basemap layer service
+  });
+
+  const view = new MapView({
+    map: map,
+    center: [-78.836598, 44.396901], //Longitude, latitude
+    zoom: 10,
+    container: "viewDiv"
+ });
+  const graphicsLayer = new GraphicsLayer();
+  map.add(graphicsLayer);
+    
+  const point = { //Create a point
     type: "point",
     longitude: -78.7644313,
     latitude: 44.3473155,
@@ -72,12 +57,12 @@
         width: 1
     }
  };
-         const pointGraphic = new Graphic({
+ const pointGraphic = new Graphic({
     geometry: point,
     symbol: simpleMarkerSymbol
  });
  graphicsLayer.add(pointGraphic);
-      });
+    
        // Create a polygon geometry
  const polygon = {
     type: "polygon",
@@ -110,7 +95,7 @@
 
  });
  graphicsLayer.add(polygonGraphic);
-
+});
   
  </script>
     
