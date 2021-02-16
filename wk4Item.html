@@ -63,7 +63,13 @@
  });
  graphicsLayer.add(pointGraphic);
     
-       // Create a polygon geometry
+ const polylineGraphic = new Graphic({
+    geometry: polyline,
+    symbol: simpleLineSymbol
+ });
+ graphicsLayer.add(polylineGraphic);
+
+ // Create a polygon geometry
  const polygon = {
     type: "polygon",
     rings: [
@@ -76,27 +82,26 @@
         [-78.736960, 44.322451],  //Longitude, latitude
         [-78.703618, 44.359731],  //Longitude, latitude
         [-78.744630, 44.384699]  //Longitude, latitude
-      
-      
     ]
  };
 
  const simpleFillSymbol = {
     type: "simple-fill",
-    color: [255, 204, 229, 0.8],  // Orange, opacity 80%
+    color: [227, 139, 79, 0.8],  // Orange, opacity 80%
     outline: {
-        color: [255, 204, 229],
-        width: 2
+        color: [255, 255, 255],
+        width: 1
     }
  };
-    const polygonGraphic = new Graphic({
+
+ const polygonGraphic = new Graphic({
     geometry: polygon,
     symbol: simpleFillSymbol,
 
  });
  graphicsLayer.add(polygonGraphic);
-});
-  
+
+ });
  </script>
     
   </head>
