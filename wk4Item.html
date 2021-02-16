@@ -107,6 +107,26 @@
  });
  graphicsLayer.add(pointGraphic);
       });
+       // Create a polygon geometry
+ const polygon = {
+    type: "polygon",
+    rings: [
+        [-118.818984489994, 34.0137559967283], //Longitude, latitude
+        [-118.806796597377, 34.0215816298725], //Longitude, latitude
+        [-118.791432890735, 34.0163883241613], //Longitude, latitude
+        [-118.79596686535, 34.008564864635],   //Longitude, latitude
+        [-118.808558110679, 34.0035027131376]  //Longitude, latitude
+    ]
+ };
+
+ const simpleFillSymbol = {
+    type: "simple-fill",
+    color: [255, 204, 229, 0.8],  // Orange, opacity 80%
+    outline: {
+        color: [255, 204, 229],
+        width: 2
+    }
+ };
     </script>
     
   </head>
