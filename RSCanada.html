@@ -33,9 +33,10 @@
     "esri/Map",
     "esri/views/MapView",
 
-    "esri/layers/FeatureLayer"
+    "esri/layers/FeatureLayer",
+    "esri/widgets/Locate"
 
-  ], function(esriConfig,Map, MapView, FeatureLayer) {
+  ], function(esriConfig,Map, MapView, FeatureLayer, Locate) {
 
   esriConfig.apiKey = "AAPKabbee03894ee40d6858ccede905fae8aeuROdfYdGIi6Db9F9VBWSxlx8Avy6-J1iOeUjmgkFRPTx4sJkCAD8jGbYZQb9jKc";
 
@@ -49,6 +50,16 @@
     center: [-102.1607343, 58.1796924],
     zoom: 5
   });
+  
+  const locate = new Locate({
+          view: view,
+          useHeadingEnabled: false,
+          goToOverride: function(view, options) {
+            options.target.scale = 1500;
+            return view.goTo(options.target);
+          }
+        });
+        view.ui.add(locate, "top-left");
 
 
 
