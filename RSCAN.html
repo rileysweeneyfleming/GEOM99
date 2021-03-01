@@ -38,6 +38,14 @@
   });
 
 
+
+//Trails feature layer (lines)
+  const trailsLayer = new FeatureLayer({
+    url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trails_Styled/FeatureServer/0"
+  });
+
+  map.add(trailsLayer, 0);
+
 // Parks and open spaces (polygons)
   const parksLayer = new FeatureLayer({
     url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Parks_and_Open_Space_Styled/FeatureServer/0"
