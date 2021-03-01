@@ -1,49 +1,59 @@
 <!DOCTYPE html>
+</html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>ArcGIS API for JavaScript Tutorials: Display a map</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>ArcGIS API for JavaScript Tutorials: Add a feature layer</title>
+  <style>
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.18/"></script>
 
-    <style>
-      html,
-      body,
-      #viewDiv {
-        padding: 0;
-        margin: 0;
-        height: 100%;
-        width: 100%;
-      }
-    </style>
+  <script>
+  require([
+    "esri/config",
+    "esri/Map",
+    "esri/views/MapView",
 
-    <link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/themes/light/main.css">
-    <script src="https://js.arcgis.com/4.18/"></script>
+    "esri/layers/FeatureLayer"
 
-    <script>
-      require(["esri/config","esri/Map", "esri/views/MapView", "esri/layers/FeatureLayer"], function (esriConfig,Map, MapView) {
+  ], function(esriConfig,Map, MapView, FeatureLayer) {
 
-        esriConfig.apiKey = "AAPKabbee03894ee40d6858ccede905fae8aeuROdfYdGIi6Db9F9VBWSxlx8Avy6-J1iOeUjmgkFRPTx4sJkCAD8jGbYZQb9jKc";
+  esriConfig.apiKey = "AAPKabbee03894ee40d6858ccede905fae8aeuROdfYdGIi6Db9F9VBWSxlx8Avy6-J1iOeUjmgkFRPTx4sJkCAD8jGbYZQb9jKc";
 
-        const map = new Map({
-          basemap: "arcgis-topographic" // Basemap layer service
-        });
+  const map = new Map({
+    basemap: "arcgis-topographic"
+  });
 
-        const view = new MapView({
-          map: map,
-          center: [-102.1607343, 58.1796924], // Longitude, latitude
-          zoom: 5, // Zoom level
-          container: "viewDiv" // Div element
-        });
-        const RilsweenCanada = new FeatureLayer({
-          url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99lab1/RilsweenCanada/MapServer/0"
-        });
-        map.add(RilsweenCanada, 0);
-      });
+  const view = new MapView({
+    container: "viewDiv",
+    map: map,
+    center: [-102.1607343, 58.1796924],
+    zoom: 5
+  });
 
-    </script>
 
-  </head>
-  <body>
-    <div id="viewDiv"></div>
-  </body>
+
+//Trails feature layer (lines)
+  const trailsLayer = new FeatureLayer({
+    url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99lab1/RilsweenCanada/MapServer/0"
+  });
+
+  map.add(trailsLayer, 0);
+
+
+  });
+</script>
+
+</head>
+<body>
+  <div id="viewDiv"></div>
+</body>
 </html>
