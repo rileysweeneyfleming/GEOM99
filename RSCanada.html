@@ -34,10 +34,10 @@
           zoom: 5, // Zoom level
           container: "viewDiv" // Div element
         });
-        const parksLayer = new FeatureLayer({
-          url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Parks_and_Open_Space_Styled/FeatureServer/0"
+        const provinces = new FeatureLayer({
+          url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99lab1/RilsweenCanada/MapServer"
         });
-        map.add(parksLayer, 0);
+        map.add(provinces, 0);
       });
 
     </script>
